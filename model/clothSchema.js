@@ -1,6 +1,6 @@
 const {checkSchema} = require('express-validator');
 
-const clotheSchema = checkSchema({
+const clothSchema = checkSchema({
     name: {
         in: ['body'],
         isString: true,
@@ -37,4 +37,4 @@ const clotheSchema = checkSchema({
         errorMessage: 'Images must be an array'
     }
 });
-module.exports = clotheSchema;
+module.exports = clothSchema;

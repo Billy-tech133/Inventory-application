@@ -1,5 +1,5 @@
 const initializeDB = require('./createdb');
-const populateDB = require('./seeddata');
+const populateDB = require('./populatedb');
 
 async function seed() {
     try {

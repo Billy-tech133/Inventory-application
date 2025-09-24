@@ -1,15 +1,17 @@
-const {Client} = require('pg');
+const { Client } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
 
-
-export async function populateDB() {
+async function populateDB() {
 
     const client = new Client({
-    connectionString: process.env.DATABASE_URI,
-    ssl: { rejectUnauthorized: false }
+    connectionString: process.env.DATABASE_URI
     });
 
     console.log('Connecting to database...');   
     await client.connect();
+
+
 
     try {
         await client.query(`
@@ -38,13 +40,13 @@ export async function populateDB() {
         ('Luxury', 200.01, 1000.00, 'USD');
         `);     
         await client.query(`
-        INSERT INTO clothes (name, sku, brand_id, designer_id, price_range_id, size, color, material, season, images) VALUES
-        ('Summer Dress', 'SKU12345', 1, 1, 2, 'M', 'Red', 'Cotton', 'Summer', 'https://example.com/dress1.png'),
-        ('Leather Jacket', 'SKU67890', 2, 2, 3, 'L', 'Black', 'Leather', 'Winter', 'https://example.com/jacket1.png'),
-        ('Casual T-Shirt', 'SKU54321', 3, 3, 1, 'S', 'White', 'Polyester', 'All Seasons', 'https://example.com/tshirt1.png');
+        INSERT INTO clothes (name, sku, brand_id, designer_id, price_range_id, size, color, material, images) VALUES
+        ('Summer Dress', 'SKU12345', 1, 1, 2, 'M', 'Red', 'Cotton',  'https://example.com/dress1.png'),
+        ('Leather Jacket', 'SKU67890', 2, 2, 3, 'L', 'Black', 'Leather', 'https://example.com/jacket1.png'),
+        ('Casual T-Shirt', 'SKU54321', 3, 3, 1, 'S', 'White', 'Polyester',  'https://example.com/tshirt1.png');
         `);     
         await client.query(`
-        INSERT INTO inventory (clothes_id, quantity, location, last_restocked) VALUES
+        INSERT INTO inventory (clothes_id, quantity, location, last_updated) VALUES
         (1, 100, 'Warehouse A', '2024-01-15'),
         (2, 50, 'Warehouse B', '2024-02-20'),
         (3, 200, 'Storefront', '2024-03-05');
@@ -56,3 +58,5 @@ export async function populateDB() {
         await client.end();
     }
 }
+
+module.exports = populateDB;

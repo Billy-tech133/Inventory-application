@@ -1,11 +1,10 @@
-const {Client} = require('pg');
-require('dotenv').config(); 
+const { Client } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
 
-
-export async function initializeDB() {
+ async function initializeDB() {
 const client = new Client({
-    connectionString: process.env.DATABASE_URI,
-    ssl: { rejectUnauthorized: false }
+    connectionString: process.env.DATABASE_URI
 });
 
 console.log('Connecting to database...');   
@@ -13,6 +12,17 @@ await client.connect();
 
 
 try {
+    console.log(`dropping existing tables...`);
+
+    await client.query(`
+        DROP TABLE IF EXISTS inventory;
+        DROP TABLE IF EXISTS clothes;
+        DROP TABLE IF EXISTS price_ranges;
+        DROP TABLE IF EXISTS designer_brand;
+        DROP TABLE IF EXISTS designers;
+        DROP TABLE IF EXISTS brands;
+    `);
+
 await client.query(`
 CREATE TABLE brands (
     brand_id SERIAL PRIMARY KEY,
@@ -90,3 +100,4 @@ CREATE TABLE inventory (
 }
 
 
+module.exports = initializeDB;

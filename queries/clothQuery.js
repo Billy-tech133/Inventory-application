@@ -1,4 +1,4 @@
-const pool = require('./pool');
+const pool = require('../db/pool');
 
 
 async function getAllItems() {
