@@ -20,11 +20,11 @@ async function getItemById(id) {
 }
 
 async function addItem(item) {
-    const {name, sku, brand_id, designer_id, price_range_id, description, images} = item;
+    const {name, sku, size, color, material, brand_id, designer_id, price_range_id, description, images} = item;
     const {rows} = await pool.query(
-        `INSERT INTO clothes (name, sku, brand_id, designer_id, price_range_id, description, images)
-         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-        [name, sku, brand_id, designer_id, price_range_id, description, images]
+        `INSERT INTO clothes (name, sku, size, color, material, brand_id, designer_id, price_range_id, description, images)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+        [name, sku, size, color, material, brand_id, designer_id, price_range_id, description, images]
     );
     return rows[0];
 }

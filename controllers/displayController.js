@@ -12,7 +12,7 @@ const navLinks = [
 // }
 
 async function displayCreateItemPage(req, res) {
-    res.render('pages/createItem', {title: "Create New Item"})
+    res.render('pages/addCloth', {title: "Create New Item"})
 }
 
 module.exports = { displayCreateItemPage }

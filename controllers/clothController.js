@@ -1,5 +1,5 @@
 const {getAllItems, getItemById, addItem, updateItem, deleteItem} = require("../queries/clothQuery")
-const {matchData, validationResult} = require('express-validator')
+const {matchedData, validationResult} = require('express-validator')
 const clothSchema = require("../model/clothSchema")
 
 async function getItems(req, res)  {
@@ -33,14 +33,14 @@ async function createItem(req, res) {
         return res.status(400).json({ errors: errors.array() });
     }
     const item = req.body;
-    const matched = matchData(item, clothSchema);
+    const matched = matchedData(item, clothSchema);
     if (!matched) {
         return res.status(400).json({ error: "Invalid item data" });
     }
 
     try {
         const newItem = await addItem(item);
-        res.status(201).json(newItem);
+        res.redirect('/');
     } catch (error) {
         res.status(500).json({error: error.message});
     }
