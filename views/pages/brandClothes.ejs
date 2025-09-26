@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/styles/brandClothes.css">
+
+<section class="clothes_section">
+    <div class="clothes_container">
+        <h1>Clothes</h1>
+        <% clothes.forEach(item => { %>
+            <div class="clothes_card">
+                <div class="image_container">
+                    <img class="clothes_image" src="<%= item.images %>" alt="<%= item.name %>" />
+                </div>
+                <div class="clothes_info">
+                    <h2><%= item.name %></h2>
+                    <p><%= item.description %></p>
+                    <a class="button" href="/clothes/<%= item.clothes_id %>">View Details</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>  
+</section>

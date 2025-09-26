@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/styles/book.css">
+
+<div class="item_container">
+    <article class="item_card">
+        <div class="item_image_container">
+            <img class="item-image" src="<%= item.images %>" alt="image">
+        </div>
+        <div class="item_details">
+            <div>
+                <h2 class="item-name"><%= item.name %></h2>
+            </div>
+            <div class="item-attributes">
+            <p class="item-size"> <span>Size:</span> <%= item.size %></p>
+            <p class="item-color"> <span>Color:</span> <%= item.color %></p>
+            <p class="item-material"> <span>Material:</span> <%= item.material %></p>
+            <p class="item-description"> <span>Description:</span> <%= item.description %></p>
+            <p class="item-brand"> <span>Brand:</span> <%= item.brand_name %></p>
+            <p class="item-designer"> <span>Designer:</span> <%= item.designer_name %></p>
+            <p class="item-price-range"> <span>Price:</span> <%= item.range_name %> starting at $<%= item.min_price %></p>
+            </div>
+            <div class="item-actions">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </div>
+    </article>
+</div>

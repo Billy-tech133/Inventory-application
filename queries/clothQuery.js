@@ -7,7 +7,15 @@ async function getAllItems() {
 }
 
 async function getItemById(id) {
-    const {rows} = await pool.query('SELECT * FROM clothes WHERE clothes_id = $1', [id]);
+    const {rows} = await pool.query(
+        `SELECT c.*, b.name AS brand_name, d.name AS designer_name, p.range_name, p.min_price, p.max_price AS price_range
+         FROM clothes c
+         LEFT JOIN brands b ON c.brand_id = b.brand_id
+         LEFT JOIN designers d ON c.designer_id = d.designer_id
+         LEFT JOIN price_ranges p ON c.price_range_id = p.price_range_id
+         WHERE c.clothes_id = $1`,
+        [id]
+    );
     return rows[0];
 }
 

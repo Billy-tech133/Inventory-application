@@ -1,0 +1,93 @@
+.item_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+}
+
+.item_card {
+    display: flex;
+    border: 1px solid #eee;
+    gap: 12px;
+    width: 760px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.item-image {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    /* margin-bottom: 16px; */
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    text-align: left;
+}
+
+h2.item-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+p span {
+    margin-right: 4px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+}
+p.item-size {
+    margin-bottom: 6px;
+}
+
+p.item-color {
+    margin-bottom: 6px;
+}
+
+p.item-material {
+    margin-bottom: 6px;
+}
+
+p.item-description {
+    margin-bottom: 12px;
+}
+
+
+.item-actions {
+    display: flex;
+    gap: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 24px;
+    align-items: flex-start;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.bio_container {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+.bio {
+    margin-top: 5px;
+}

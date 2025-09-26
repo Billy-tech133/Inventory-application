@@ -5,10 +5,10 @@ const { getItems, getItem, createItem, modifyItem, removeItem} = require('../con
 const clothesRouter = Router();
 
 clothesRouter.get('/', getItems);
-clothesRouter.get('/:id', getItem);
+clothesRouter.get('/clothes/:clothes_id', getItem);
 clothesRouter.post('/', createItem);
-clothesRouter.put('/:id', modifyItem);
-clothesRouter.delete('/:id', removeItem);
+clothesRouter.put('/clothes/:clothes_id', modifyItem);
+clothesRouter.delete('/clothes/:clothes_id', removeItem);
 
 module.exports = clothesRouter;
 

@@ -4,7 +4,7 @@ async function getInventoryItems(req, res) {
     try {
         const items = await getAllInventoryItems();
         console.log(items);
-        res.status(200).json(items);
+        res.render('pages/inventory', {inventory: items});
     } catch (error) {
         res.status(500).json({error: error.message});
     }

@@ -5,27 +5,29 @@ const clothSchema = require("../model/clothSchema")
 async function getItems(req, res)  {
     try {
         const items = await getAllItems();
-        res.status(200).json(items);
+        console.log(items)
+        res.render("pages/home", { title: "Home", items: items });
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
 async function getItem(req, res) {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.clothes_id);
     try {
         const item = await getItemById(id);
         if (!item) {
             return res.status(404).json({error: "Item not found"});
         }
-        res.status(200).json(item);
+        console.log(item)
+        res.render("pages/clothes", { title: "Item Details", item: item });
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
 async function createItem(req, res) {
-    
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });

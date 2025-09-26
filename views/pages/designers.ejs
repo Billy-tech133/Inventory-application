@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/styles/designer.css">
+
+<section>
+    <h1>Designers</h1>
+    <div class="designer_list">
+        <% designers.forEach(designer => { %>
+            <a class="designer_item" href="/designers/<%= designer.designer_id %>">
+                <h2><%= designer.name %></h2>
+                <p><%= designer.biography %></p>
+                <p>Specialty: <%= designer.specialty %></p>
+                <p>Contact: <%= designer.contact_info %></p>
+                <p>Description: <%= designer.description %></p>
+            </a>
+        <% }) %>
+    </div>
+</section>

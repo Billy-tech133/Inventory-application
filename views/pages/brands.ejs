@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/styles/brands.css">
+
+<section class="brands_section">
+    <div class="brands_container">
+        <h1>Brands</h1>
+        <% brands.forEach(brand => { %>
+            <div class="brands_card">
+                <h2><%= brand.name %></h2>
+                <p><%= brand.description %></p>
+                <a class="button" href="/brands/<%= brand.brand_id %>/clothes">View Clothes</a>
+            </div>
+        <% }); %>
+    </div>
+</section>

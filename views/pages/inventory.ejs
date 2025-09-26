@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/styles/inventory.css">
+
+<section class="inventory_section">
+    <div class="inventory_container">
+        <h1>Inventory</h1>
+        <% inventory.forEach(item => { %>
+            <div class="inventory_card">
+                <h2><%= item.name %></h2>
+                <p><%= item.description %></p>
+                <a class="button" href="/inventory/<%= item.item_id %>">View Details</a>
+            </div>
+        <% }); %>
+    </div>
+</section>

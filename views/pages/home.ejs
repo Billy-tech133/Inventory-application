@@ -1,0 +1,11 @@
+   <link rel="stylesheet" href="/styles.css">     
+        
+        <section class="book_container">
+            <% items.forEach(item => { %>
+                <a href="/clothes/<%= item.clothes_id %>" class="book_item">
+                    <img class="item-image" src="<%= item.images %>" alt="image">
+                    <P class="item-name"><%= item.name %></P>
+                    <p class="item-size"><%= item.size %></p>  
+                </a>
+            <% }) %>
+        </section>

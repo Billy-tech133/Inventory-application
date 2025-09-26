@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/styles/designer.css">
+
+<section class="container">
+    <article class="designer_detail">
+        <div class="header">
+            <h1><%= designer.name %></h1>
+        </div>
+        <div class="biography">
+            <div class="bio_container">
+                <p class="bio"><span>Biography:</span><%= designer.biography %></p>
+            </div>
+            <p class="specialty">Specialty: <%= designer.specialty %></p>
+            <p class="contact">Contact: <%= designer.contact_info %></p>
+        </div>
+        <a class="button" href="/designers/<%= designer.designer_id %>/clothes">View designs</a>
+    </article>
+</div>
