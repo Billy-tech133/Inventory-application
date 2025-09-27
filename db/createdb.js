@@ -1,10 +1,12 @@
 const { Client } = require('pg');
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config({path: process.env.NODE_ENV === "production" ? '.env.production' : '.env.development'});
 
  async function initializeDB() {
+
 const client = new Client({
-    connectionString: process.env.DATABASE_URI
+    connectionString: process.env.DATABASE_URI,
+    ssl: process.env.NODE_ENV === "production" ? {rejectUnauthorized: false} : false
 });
 
 console.log('Connecting to database...');   
