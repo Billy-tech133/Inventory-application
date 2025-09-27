@@ -2,6 +2,8 @@ const express = require('express');
 const indexRouter = require('./routes/indexRouter');
 const path = require('node:path')
 const expressLayouts = require('express-ejs-layouts');
+const dotenv = require('dotenv')
+dotenv.config({path: process.env.NODE_ENV === "production" ? '.env.production' : '.env.development'})
 
 
 const app = express();
