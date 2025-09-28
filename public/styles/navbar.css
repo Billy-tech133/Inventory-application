@@ -39,3 +39,32 @@
     border-radius: 4px;
     text-decoration: none;
 }
+
+.createItem {
+    background-color: #35424a;
+    color: white;
+    padding: 6px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.createItem:hover {
+    background-color: #e8491d;
+}
+
+ li a:hover{
+    background-color: #e8491d;
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #e8491d;
+}

@@ -26,7 +26,7 @@ async function getItem(req, res) {
 
 
 async function displayCreateItemPage(req, res) {
-    res.render("pages/createClothForm", { title: "Create Item" });
+    res.render("pages/addCloth", { title: "Create Item" });
 }
 
 
