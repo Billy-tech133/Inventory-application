@@ -73,6 +73,7 @@ p.item-description {
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-primary {

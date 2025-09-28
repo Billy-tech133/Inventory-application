@@ -1,13 +1,11 @@
 const { Client } = require('pg');
 const dotenv = require('dotenv');
+const { dbConfig } = require('./pool');
 dotenv.config({path: process.env.NODE_ENV === "production" ? '.env.production' : '.env.development'});
 
 async function populateDB() {
 
-    const client = new Client({
-    connectionString: process.env.DATABASE_URI,
-    ssl: process.env.NODE_ENV === "production" ? {rejectUnauthorized: false} : false
-    });
+    const client = new Client(dbConfig);
 
     console.log('Connecting to database...');   
     await client.connect();
