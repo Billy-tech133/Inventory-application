@@ -1,12 +1,14 @@
 const fs = require('fs');
 const { Client } = require('pg');
+const dotenv = require('dotenv')
+dotenv.config({path: process.env.NODE_ENV === "production" ? '.env.production' : '.env.development'});  
 
 
 
 async function migrate() {
     const client = new Client({
         connectionString: process.env.DATABASE_URI,
-        ssl: { rejectUnauthorized: false }
+        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     });
 
     const sql = fs.readFileSync('createddb.sql', 'utf-8');

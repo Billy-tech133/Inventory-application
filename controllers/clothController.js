@@ -5,7 +5,6 @@ const clothSchema = require("../model/clothSchema")
 async function getItems(req, res)  {
     try {
         const items = await getAllItems();
-        console.log(items)
         res.render("pages/home", { title: "Home", items: items });
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -19,15 +18,19 @@ async function getItem(req, res) {
         if (!item) {
             return res.status(404).json({error: "Item not found"});
         }
-        console.log(item)
         res.render("pages/clothes", { title: "Item Details", item: item });
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
-async function createItem(req, res) {
 
+async function displayCreateItemPage(req, res) {
+    res.render("pages/createClothForm", { title: "Create Item" });
+}
+
+
+async function createItem(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -37,37 +40,44 @@ async function createItem(req, res) {
     if (!matched) {
         return res.status(400).json({ error: "Invalid item data" });
     }
-
     try {
-        const newItem = await addItem(item);
+        await addItem(item);
         res.redirect('/');
     } catch (error) {
         res.status(500).json({error: error.message});
     }
-}       
+}     
+
+async function displayUpdatePage(req, res) {
+    const id = parseInt(req.params.clothes_id);
+    try {
+        const clothes = await getItemById(id);
+        if (!clothes) {
+            return res.status(404).json({error: "Clothes not found"});
+        }
+     res.render('pages/updateClothForm', { title: "Update Item", clothes: clothes });    
+    } catch(error) {
+        res.status(500).json({error: error.message});
+    }
+}
 
 async function modifyItem(req, res) {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.clothes_id);
     const item = req.body;
     try {
-        const updatedItem = await updateItem(id, item);
-        if (!updatedItem) {
-            return res.status(404).json({error: "Item not found"});
-        }
-        res.status(200).json(updatedItem);
+        await updateItem(id, item);
+        console.log(item)
+        res.redirect(`/clothes/${id}`)
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
 async function removeItem(req, res) {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.clothes_id);
     try {
-        const deletedItem = await deleteItem(id);
-        if (!deletedItem) {
-            return res.status(404).json({error: "Item not found"});
-        }
-        res.status(204).send();
+         await deleteItem(id);
+            res.redirect('/');
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -80,5 +90,7 @@ module.exports = {
     getItem,
     createItem,
     modifyItem,
-    removeItem
+    removeItem,
+    displayUpdatePage,
+    displayCreateItemPage
 };

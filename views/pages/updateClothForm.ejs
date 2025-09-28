@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/styles/updateCloth.css">
+
+<div class="update_form_container">
+    <h1>Update Item</h1>
+    <form class="form" action="/clothes/<%= clothes.clothes_id %>" method="POST">
+        <div class="update_form_group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name" placeholder="Name" required value="<%= clothes.name %>">
+        </div>
+        <div class="update_form_group">
+            <label for="sku">SKU</label>
+            <input class="form-control" type="text" id="sku" name="sku" placeholder="SKU" required value="<%= clothes.sku %>">
+        </div>
+        <div class="update_form_group">
+            <label for="size">Size</label>
+            <input class="form-control" type="text" id="size" name="size" placeholder="Size" required value="<%= clothes.size %>">
+        </div>
+        <div class="update_form_group">
+            <label for="color">Color</label>
+            <input class="form-control" type="text" id="color" name="color" placeholder="Color" value="<%= clothes.color %>">
+        </div>
+        <div class="update_form_group">
+            <label for="material">Material</label>
+            <input class="form-control" type="text" id="material" name="material" placeholder="Material" value="<%= clothes.material %>">
+        </div>
+        <div class="update_form_group">
+            <label for="designer_id">Designer ID</label>
+            <input class="form-control" type="number" id="designer_id" name="designer_id" placeholder="Designer ID" required value="<%= clothes.designer_id %>">
+        </div>
+        <div class="update_form_group">
+            <label for="brand_id">Brand ID</label>
+            <input class="form-control" type="number" id="brand_id" name="brand_id" placeholder="Brand ID" required value="<%= clothes.brand_id %>">
+        </div>
+        <div class="update_form_group">
+            <label for="price_range_id">Price Range ID</label>
+            <input class="form-control" type="number" id="price_range_id" name="price_range_id" placeholder="Price Range ID" required value="<%= clothes.price_range_id %>">
+        </div>
+        <div class="update_form_group">
+            <label for="description">Description</label>
+            <textarea class="text-description" id="description" name="description" placeholder="Description"><%= clothes.description %></textarea>
+        </div>
+        <div class="update_form_group">
+            <label for="images">Image Url</label>
+            <input class="form-control" type="text" id="images" name="images" placeholder="Image" value="<%= clothes.images %>">
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+</div>

@@ -5,10 +5,8 @@ const priceRouter = require('./priceRouter');
 const inventoryRouter = require('./inventoryRouter');
 const designerBrandRouter = require('./designerBrandRouter');
 const brandRouter = require('./brandRouter'); 
-const {displayHomePage, displayCreateItemPage} = require('../controllers/displayController')
 const indexRouter = Router();
 
-indexRouter.get('/create', displayCreateItemPage);
 indexRouter.use('/', clothesRouter);
 indexRouter.use('/designers', designerRouter);
 indexRouter.use('/prices', priceRouter);
